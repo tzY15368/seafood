@@ -8,7 +8,7 @@ import datetime
 import time,os,copy,requests,json
 from PIL import Image
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:Bit_root_123@127.0.0.1:3306/seafood"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://*/seafood"
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY']='wtfwtf'
@@ -89,7 +89,6 @@ def pcode():
     if not code:
         msg['data']='no code'
         return jsonify(msg)
-    params = '?appid=wx4bfcddd32c3af599&secret=1c4000a5338fdd9d214438c25853b983&js_code='+code+'&grant_type=authorization_code'
     url = 'https://api.weixin.qq.com/sns/jscode2session'+params
     #print(url)
     r = requests.get(url)
