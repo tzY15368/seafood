@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/share/share"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "教你识海鲜",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-card": "../../dist/card/index",
+    "van-button": "../../dist/button/index",
+    "van-icon": "../../dist/icon/index",
+    "van-loading": "../../dist/loading/index",
+    "van-dialog": "../../dist/dialog/index",
+    "van-swipe-cell": "../../dist/swipe-cell/index",
+    "van-toast": "../../dist/toast/index",
+    "van-cell": "../../dist/cell/index",
+    "van-tabbar": "../../dist/tabbar/index",
+    "van-tabbar-item": "../../dist/tabbar-item/index",
+    "van-notify": "../../dist/notify/index"
+}
+}

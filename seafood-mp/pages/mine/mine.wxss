@@ -1,0 +1,6 @@
+/* pages/mine/mine.wxss */
+.test{
+    overflow:scroll;
+    border-width:10px;
+    border-color:green;
+}

@@ -1,0 +1,35 @@
+<!--index.wxml-->
+<van-notify id="van-notify" />
+<van-dialog
+    use-slot
+    title="分享"
+    show="{{ show }}"
+    show-cancel-button
+    confirm-button-open-type="getUserInfo"
+    bind:close="onClose"
+    bind:getuserinfo="getUserInfo"
+>
+    <button open-type='share'>点我发起分享 </button>
+</van-dialog>
+<view class="container">
+  
+    <van-panel title="{{panelTitle}}" desc="上传时间：{{uploadTime}}" status="{{predStatus}}" use-footer-slot>
+        <view>
+            <image src="{{imgUrl}}" class="front_pic" mode="widthFix"></image>
+            <text class="pred_disp" style="justify-content:center;">{{result_str}}</text>
+        </view>
+        <view slot="footer" style="text-align:right;">
+            <van-icon wx:if="{{info.data.predicted=='0'}}" name="replay"bindtap="manualRefresh" id="{{info.id}}" data-index="{{index}}" size="30px" style="display:{{loading}}"/>
+            <van-loading wx:if="{{info.data.predicted=='0'}}" type="spinner" style="display:{{finish}}" size="30px"/>
+            <van-icon wx:if="{{info.data.predicted!='0'}}"name="share" bindtap="onShare" size="30px" id="share_{{info.id}}" data-index="{{index}}" style="display:{{shareLoading}}"/>
+            <van-loading wx:if="{{info.data.predicted!='0'}}" type="spinner"  size="30px" style="display:{{shareFinish}}"/>
+        </view>
+    </van-panel>
+  <van-button plain type="info"bindtap="upload" style="display:{{uploadDisp}}">图片上传</van-button>
+</view>
+
+<van-tabbar active="{{active}}" bind:change="onChange">
+  <van-tabbar-item icon="home-o" name="home">Home</van-tabbar-item>
+  <van-tabbar-item icon="share" name="share">Share</van-tabbar-item>
+  <van-tabbar-item icon="orders-o" name="mine">My uploads</van-tabbar-item>
+</van-tabbar>

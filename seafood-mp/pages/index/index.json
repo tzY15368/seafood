@@ -1,0 +1,13 @@
+{
+    "usingComponents": {
+        "van-cell": "../../dist/cell/index",
+        "van-tabbar": "../../dist/tabbar/index",
+        "van-tabbar-item": "../../dist/tabbar-item/index",
+        "van-loading": "../../dist/loading/index",
+        "van-button": "../../dist/button/index",
+        "van-icon": "../../dist/icon/index",
+        "van-dialog": "../../dist/dialog/index",
+        "van-panel": "../../dist/panel/index",
+        "van-notify": "../../dist/notify/index"
+    }
+}

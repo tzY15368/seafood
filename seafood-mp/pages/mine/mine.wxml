@@ -1,0 +1,55 @@
+
+ <block wx:if="{{loaded===0}}">
+ </block>
+ 
+ <block wx:else style="overflow:scroll">
+ 
+    <van-dialog id="van-dialog" />
+    <van-toast id="van-toast" />
+    <van-dialog
+        use-slot
+        title="分享"
+        show="{{ show }}"
+        show-cancel-button
+        confirm-button-open-type="getUserInfo"
+        bind:close="onClose"
+        bind:getuserinfo="getUserInfo"
+    >
+        <button open-type='share'>点我发起分享 </button>
+    </van-dialog>
+    <view class="test">
+    <view wx:for="{{info}}" style="display:{{disp_toggle}}" wx:for-index="index"wx:key="unique"style="background:#FAFAFA;">
+    <van-swipe-cell right-width="{{ 65 }}"style="background:#FAFAFA" >
+    <van-cell-group >
+        <van-card
+            tag="{{item.names[0]}}"
+            title="{{item.upload_time}}"
+            thumb="{{server_name}}/static/thumbnails/{{item.wxid}}/{{item.filename}}"
+            lazy-load
+        >
+            <view slot="desc">
+                <text>{{item.result_str}}</text>
+            </view>
+            <view slot="footer">
+                <van-icon wx:if="{{item.names[1]===1}}" name="replay"bindtap="manualRefresh" id="{{item.id}}" data-index="{{index}}" size="30px" style="display:{{item.loading}}"/>
+                <van-loading wx:if="{{item.names[1]===1}}" type="spinner" style="display:{{item.finish}}" size="30px"/>
+                <van-icon wx:if="{{item.names[1]!==1}}"name="share" bindtap="onShare" size="30px"id="share_{{item.id}}" data-index="{{index}}" style="display:{{item.shareLoading}}"/>
+                <van-loading wx:if="{{item.names[1]!==1}}" type="spinner"  size="30px" style="display:{{item.shareFinish}}"/>
+            </view>
+        </van-card>
+            </van-cell-group>
+            <view slot="right" style="background:#FAFAFA">
+                <text>\n\n</text>
+                <van-icon name="delete" size="60px" color="red" bindtap="onDelete" />
+                
+            </view>
+        </van-swipe-cell>
+    </view>
+    <text>\n\n</text>
+    </view>
+ </block>
+ <van-tabbar active="{{active}}" bind:change="onChange" >
+  <van-tabbar-item icon="home-o" name="home">Home</van-tabbar-item>
+  <van-tabbar-item icon="share" name="share">Share</van-tabbar-item>
+  <van-tabbar-item icon="orders-o" name="mine">My uploads</van-tabbar-item>
+</van-tabbar>
