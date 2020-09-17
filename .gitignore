@@ -1,1 +1,4 @@
 seafood-mp/dist
+*.pb
+*.pyc
+.DS_Store
